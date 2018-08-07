@@ -1,6 +1,7 @@
 #!flask/bin/python
 from flask import Flask
 from flask import request
+from flask import jsonify
 from flask_cors import CORS
 import json
 import os
@@ -21,7 +22,7 @@ CORS(app)
 def index():
     return "Hello, World!"
 
-@app.route('/generate', methods=['POST', 'GET'])
+@app.route('/generate', methods=['POST'])
 def generate():
     error = None
     print("Hello")
@@ -41,7 +42,13 @@ def generate():
             print('Fail')
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return "Success!"
+    return jsonify(success=True), 201
+
+@app.route('/get_image', methods=['GET'])
+def get_image():
+    
+    return "Hello"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
