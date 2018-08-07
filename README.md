@@ -12,3 +12,5 @@ cd sg2im-api
 python3 -m venv env
 ```
 From then on, if you want to launch the service on your computer just run `bash run.sh`
+
+The API will then be launched on `http://127.0.0.1:5000/generate`
