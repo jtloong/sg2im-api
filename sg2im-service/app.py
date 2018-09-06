@@ -10,6 +10,7 @@ from scripts.run_model import main
 
 class argumentBuilder:
     checkpoint = 'sg2im-models/vg128.pt'
+    id = ''
     scene_graphs_json = ''
     output_dir = 'outputs'
     draw_scene_graphs = 0
@@ -35,6 +36,7 @@ def generate():
         print(scene_graph['relationships'])
         args = argumentBuilder()
         args.scene_graphs_json = scene_graph
+        args.id = str(scene_graph['visitor_id'])
         model_build = main(args)
         if (model_build == True):
             print('Built')
@@ -46,7 +48,7 @@ def generate():
 
 @app.route('/get_image', methods=['GET'])
 def get_image():
-    
+
     return "Hello"
 
 

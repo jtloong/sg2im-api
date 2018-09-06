@@ -74,7 +74,7 @@ def main(args):
       # Save the generated images
         for i in range(imgs.shape[0]):
             img_np = imgs[i].numpy().transpose(1, 2, 0)
-            img_path = os.path.join(args.output_dir, 'img%06d.png' % i)
+            img_path = os.path.join(args.output_dir, 'img'+ args.id + '.png')
             imwrite(img_path, img_np)
 
         print('Drawing now!')
@@ -82,7 +82,7 @@ def main(args):
         if args.draw_scene_graphs == 1:
             for i, sg in enumerate(scene_graphs):
                 sg_img = vis.draw_scene_graph(sg['objects'], sg['relationships'])
-                sg_img_path = os.path.join(args.output_dir, 'sg%06d.png' % i)
+                sg_img_path = os.path.join(args.output_dir, 'sg' + args.id + '.png' % i)
                 imwrite(sg_img_path, sg_img)
         return True
     except():
